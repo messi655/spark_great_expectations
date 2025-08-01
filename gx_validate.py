@@ -38,7 +38,7 @@ context = gx.get_context(mode="file", project_root_dir=root_dir)
 data_source_name = "messi655_data_source"
 
 # Add the Data Source to the Data Context
-data_source = context.data_sources.add_spark(name=data_source_name)
+data_source = context.data_sources.add_or_update_spark(name=data_source_name)
 
 # Define the Data Asset name
 data_asset_name = "messi655_data_asset"
@@ -62,7 +62,7 @@ suite_name = "messi655_expectation_suite"
 suite = gx.ExpectationSuite(name=suite_name)
 
 # Add the Expectation Suite to the Data Context
-suite = context.suites.add(suite)
+suite = context.suites.add_or_update(suite)
 
 batch_parameters = {"dataframe": spark_df}
 
@@ -99,7 +99,7 @@ validation_definition = gx.ValidationDefinition(
 )
 
 # Add the Validation Definition to the Data Context
-context.validation_definitions.add(validation_definition)
+context.validation_definitions.add_or_update(validation_definition)
 
 base_directory = "./uncommitted/data_docs/messi655_local_site/"
 site_config = {
@@ -112,7 +112,12 @@ site_config = {
 }
 
 site_name = "messi655_data_docs_site"
-context.add_data_docs_site(site_name=site_name, site_config=site_config)
+if not site_name in context.list_data_docs_sites():
+    context.add_data_docs_site(site_name=site_name, site_config=site_config)
+else:
+    context.delete_data_docs_site(site_name)
+    context.add_data_docs_site(site_name=site_name, site_config=site_config)
+
 
 # Create a list of Actions for the Checkpoint to perform
 action_list = [
@@ -134,7 +139,7 @@ checkpoint = gx.Checkpoint(
 )
 
 # Save the Checkpoint to the Data Context
-context.checkpoints.add(checkpoint)
+context.checkpoints.add_or_update(checkpoint)
 
 validation_results = checkpoint.run(
     batch_parameters=batch_parameters, expectation_parameters=suite

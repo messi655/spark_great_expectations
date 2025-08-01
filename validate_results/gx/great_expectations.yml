@@ -94,11 +94,11 @@ fluent_datasources:
     assets:
       messi655_data_asset:
         type: dataframe
-        id: 3c7f38a2-4e41-47f1-83b1-52ff1fe93235
+        id: caec9113-98d5-41c1-95fa-2330d7ee85a4
         batch_metadata: {}
         batch_definitions:
           messi655_batch_definition:
-            id: bcfe7af0-e5b9-4143-942b-6a10b62b5fb5
+            id: 7b21a94b-bd22-46e3-8ddf-d819b5908a47
             partitioner:
 analytics_enabled:
 data_context_id: 51db50e1-6883-443b-a106-507ed529172e
