@@ -1,0 +1,22 @@
+{
+  "data": {
+    "asset": {
+      "id": "3c7f38a2-4e41-47f1-83b1-52ff1fe93235",
+      "name": "messi655_data_asset"
+    },
+    "batch_definition": {
+      "id": "bcfe7af0-e5b9-4143-942b-6a10b62b5fb5",
+      "name": "messi655_batch_definition"
+    },
+    "datasource": {
+      "id": "f583ca0f-995d-414b-8761-8e15b0d2294a",
+      "name": "messi655_data_source"
+    }
+  },
+  "id": "5844ff71-98d5-4ee3-b261-2c146b91657b",
+  "name": "messi655_validation_definition",
+  "suite": {
+    "id": "53073fe0-c192-4b24-b2a2-f5f1f188f3fb",
+    "name": "messi655_expectation_suite"
+  }
+}
